@@ -1,18 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First Website</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Awin Jomon | Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
-  <header>
-    <h1>Welcome to My Website</h1>
-    <p>This is my first website using HTML CSS JS</p>
-  </header>
 
-  <button onclick="showMessage()">Click Me</button>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h2 class="logo">Awin<span>Jomon</span></h2>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home -->
+   
+  <div class="home-content" data-aos="fade-right">
+  <section class="home" id="home">
+    <div class="home-content">
+      <h1>Hi, I'm <span>Awin Jomon</span></h1>
+      <h3>Web Developer (Student)</h3>
+      <p>
+        I create responsive and beautiful websites using HTML, CSS and JavaScript.
+      </p>
+
+      <button onclick="downloadCV()" class="btn">Download CV</button>
+
+      <div class="social-icons">
+        <a href="https://www.instagram.com/a__win_0/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/awin-jomon-04a111379/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://wa.me/qr/T4VQEMUYMYHKC1" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="home-img" data-aos="fade-left">
+
+
+
+    <div class="home-img">
+      <img src="https://i.ibb.co/1qYzqC0/profile.png" alt="profile">
+    </div>
+  </section>
+
+  <!-- About -->
+   <section class="about" id="about" data-aos="fade-up">
+
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      Hello! I'm Awin Jomon, an aspiring web developer. I love designing and
+      developing websites. I am learning new technologies and building projects
+      to improve my skills.
+    </p>
+  </section>
+
+  <!-- Portfolio -->
+   <section class="portfolio" id="portfolio">
+    <h2>My Portfolio</h2>
+
+    <div class="portfolio-container">
+
+      <div class="card">
+        <h3>Project 1</h3>
+        <p>Simple website using HTML & CSS.</p>
+        <a href="#" target="_blank">View Project</a>
+      </div>
+
+      <div class="card">
+        <h3>Project 2</h3>
+        <p>JavaScript mini app (Calculator / To-do).</p>
+        <a href="#" target="_blank">View Project</a>
+      </div>
+
+      <div class="card">
+        <h3>Project 3</h3>
+        <p>Responsive portfolio website.</p>
+        <a href="#" target="_blank">View Project</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Contact -->
+   <section class="contact" id="contact" data-aos="fade-up">
+
+  <section class="contact" id="contact">
+    <h2>Contact Me</h2>
+    <p>Let’s connect! Click WhatsApp or send an email.</p>
+
+    <div class="contact-buttons">
+      <a class="btn" href="mailto:yourmail@gmail.com">Email Me</a>
+      <a class="btn whatsapp" href="https://wa.me/qr/T4VQEMUYMYHKC1" target="_blank">WhatsApp Me</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Awin Jomon | All Rights Reserved</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
 </html>
+</head>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000,
+    once: true
+  });
+</script>
+<div class="card" data-aos="flip-left">
