@@ -1,3 +1,3 @@
-function showMessage() {
-  alert("Hello! Your website is working ✅");
+function downloadCV() {
+  alert("Upload your resume file and link it here 😊");
 }
