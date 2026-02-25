@@ -39,7 +39,7 @@ function closeModal() {
 
 // ================= SUPABASE =================
 const supabaseUrl = "https://kxqlazkoqpnxhkixkrka.supabase.co";
-const supabaseKey = "YOUR_ANON_KEY";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4cWxhemtvcXBueGhraXhrcmthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5OTA0NzAsImV4cCI6MjA4NzU2NjQ3MH0.pazNZf0EZosx7duxSabesLHISGKzqgvVuX-OJXPKR6g";
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 // ================= FEEDBACK =================
