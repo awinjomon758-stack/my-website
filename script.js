@@ -15,6 +15,8 @@ const certificates = [
 
 function loadCertificates() {
   const container = document.getElementById("certContainer");
+  if (!container) return;
+
   certificates.forEach(cert => {
     const card = document.createElement("div");
     card.classList.add("cert-card");
@@ -37,18 +39,20 @@ function closeModal() {
   document.getElementById("pdfViewer").src = "";
 }
 
+
 // ================= SUPABASE =================
 const supabaseUrl = "https://kxqlazkoqpnxhkixkrka.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4cWxhemtvcXBueGhraXhrcmthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5OTA0NzAsImV4cCI6MjA4NzU2NjQ3MH0.pazNZf0EZosx7duxSabesLHISGKzqgvVuX-OJXPKR6g";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4cWxhemtvcXBueGhraXhrcmthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5OTA0NzAsImV4cCI6MjA4NzU2NjQ3MH0.pazNZf0EZosx7duxSabesLHISGKzqgvVuX-OJXPKR6g"; // Replace with your real anon key
 const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-// ================= FEEDBACK =================
+
+// ================= FEEDBACK (STORE ONLY) =================
 document.addEventListener("DOMContentLoaded", () => {
 
   loadCertificates();
-  loadFeedback();
 
   const feedbackForm = document.getElementById("feedbackForm");
+  if (!feedbackForm) return;
 
   feedbackForm.addEventListener("submit", async (e) => {
     e.preventDefault();
@@ -62,34 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .insert([{ name, email, message }]);
 
     if (error) {
-      alert("Error submitting feedback");
+      alert("❌ Error submitting feedback");
       console.error(error);
     } else {
-      alert("Feedback submitted successfully!");
+      alert("✅ Feedback submitted successfully!");
       feedbackForm.reset();
-      loadFeedback();
     }
   });
+
 });
-
-async function loadFeedback() {
-  const feedbackList = document.getElementById("feedbackList");
-
-  const { data } = await supabaseClient
-    .from("feedback")
-    .select("*")
-    .order("created_at", { ascending: false });
-
-  feedbackList.innerHTML = "";
-
-  data?.forEach(item => {
-    const div = document.createElement("div");
-    div.classList.add("feedback-card");
-    div.innerHTML = `
-      <strong>${item.name}</strong>
-      <small style="color:#94a3b8;"> (${item.email})</small>
-      <p>${item.message}</p>
-    `;
-    feedbackList.appendChild(div);
-  });
-}
