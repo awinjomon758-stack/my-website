@@ -1,3 +1,4 @@
+// ================= CERTIFICATES =================
 const certificates = [
   { title: "Front End Web Developer Certification", issuer: "Infosys Springboard", year: "2026", file: "assets/certificates/frontend.pdf" },
   { title: "HTML5 - The Language", issuer: "Infosys Springboard", year: "2026", file: "assets/certificates/html.pdf" },
@@ -14,18 +15,14 @@ const certificates = [
 
 function loadCertificates() {
   const container = document.getElementById("certContainer");
-  if (!container) return;
-
   certificates.forEach(cert => {
     const card = document.createElement("div");
     card.classList.add("cert-card");
-
     card.innerHTML = `
       <h3>${cert.title}</h3>
       <p>${cert.issuer} — ${cert.year}</p>
       <button class="btn" onclick="openModal('${cert.file}')">View PDF</button>
     `;
-
     container.appendChild(card);
   });
 }
@@ -40,4 +37,59 @@ function closeModal() {
   document.getElementById("pdfViewer").src = "";
 }
 
-document.addEventListener("DOMContentLoaded", loadCertificates);
+// ================= SUPABASE =================
+const supabaseUrl = "https://kxqlazkoqpnxhkixkrka.supabase.co";
+const supabaseKey = "YOUR_ANON_KEY";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+// ================= FEEDBACK =================
+document.addEventListener("DOMContentLoaded", () => {
+
+  loadCertificates();
+  loadFeedback();
+
+  const feedbackForm = document.getElementById("feedbackForm");
+
+  feedbackForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("fbName").value.trim();
+    const email = document.getElementById("fbEmail").value.trim();
+    const message = document.getElementById("fbMessage").value.trim();
+
+    const { error } = await supabaseClient
+      .from("feedback")
+      .insert([{ name, email, message }]);
+
+    if (error) {
+      alert("Error submitting feedback");
+      console.error(error);
+    } else {
+      alert("Feedback submitted successfully!");
+      feedbackForm.reset();
+      loadFeedback();
+    }
+  });
+});
+
+async function loadFeedback() {
+  const feedbackList = document.getElementById("feedbackList");
+
+  const { data } = await supabaseClient
+    .from("feedback")
+    .select("*")
+    .order("created_at", { ascending: false });
+
+  feedbackList.innerHTML = "";
+
+  data?.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("feedback-card");
+    div.innerHTML = `
+      <strong>${item.name}</strong>
+      <small style="color:#94a3b8;"> (${item.email})</small>
+      <p>${item.message}</p>
+    `;
+    feedbackList.appendChild(div);
+  });
+}
