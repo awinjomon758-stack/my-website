@@ -2,11 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Awin Jomon | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="style.css">
-
   <link rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
@@ -16,79 +15,54 @@
 <!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <img src="myphoto.jpg" alt="Awin Jomon" class="hero-img">
+    <img src="myphoto.jpg" class="hero-img">
     <h1 class="hero-name">Awin Jomon</h1>
-    <p class="hero-title">Web Developer</p>
+    <p class="hero-title">Full Stack Developer</p>
     <a href="#main" class="btn">Enter Portfolio</a>
   </div>
 </section>
 
 <div id="main">
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <h2 class="logo">Awin<span>Jomon</span></h2>
-    <ul class="nav-links">
-      <li><a href="#main">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#certifications">Certifications</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+<nav class="navbar">
+  <h2 class="logo">Awin<span>Jomon</span></h2>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#feedback">Feedback</a></li>
+  </ul>
+</nav>
 
-  <!-- ABOUT -->
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm Awin Jomon, a passionate Web Developer and BCA student
-      interested in Full Stack Development and Cloud Technologies.
-    </p>
-    <p>
-      Skilled in HTML, CSS, JavaScript and Node.js.
-      I build responsive and modern web applications.
-    </p>
-
-    <div class="social-icons">
-      <a href="https://www.instagram.com/a__win_0/" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/awin-jomon-04a111379/" target="_blank">
-        <i class="fa-brands fa-linkedin"></i>
-      </a>
-      <a href="https://wa.me/qr/T4VQEMUYMYHKC1" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
-      </a>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS -->
-  <section class="certifications-page" id="certifications">
-    <h2>My Certifications</h2>
-    <div id="certContainer" class="cert-grid"></div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: awinjomon758@gmail.com</p>
-  </section>
-<section id="feedback" class="fade">
-  <h2>Feedback</h2>
-  <form class="feedback-form" id="feedbackForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <textarea rows="5" id="message" placeholder="Your Feedback" required></textarea>
-    <button type="submit">Submit Feedback</button>
-  </form>
-  <div id="status"></div>
+<section class="about" id="about">
+  <h2>About Me</h2>
+  <p>BCA Student | Web Developer | Cloud & AI Learner</p>
 </section>
-  <footer>
-    <p>© 2026 Awin Jomon | All Rights Reserved</p>
-  </footer>
+
+<section class="certifications-page" id="certifications">
+  <h2>My Certifications</h2>
+  <div id="certContainer" class="cert-grid"></div>
+</section>
+
+<section id="feedback">
+  <h2>Feedback</h2>
+
+  <form id="feedbackForm">
+    <input type="text" id="fbName" placeholder="Your Name" required>
+    <input type="email" id="fbEmail" placeholder="Your Email" required>
+    <textarea id="fbMessage" placeholder="Your Message" required></textarea>
+    <button type="submit" class="btn">Submit Feedback</button>
+  </form>
+
+  <div id="feedbackList"></div>
+</section>
+
+<footer>
+  © 2026 Awin Jomon | All Rights Reserved
+</footer>
 
 </div>
 
-<!-- MODAL -->
+<!-- Modal -->
 <div id="modal" class="modal">
   <div class="modal-content">
     <span class="close-btn" onclick="closeModal()">×</span>
@@ -96,9 +70,9 @@
   </div>
 </div>
 
+<!-- Supabase CDN -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="script.js"></script>
 
 </body>
 </html>
-
-
