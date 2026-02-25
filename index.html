@@ -97,65 +97,7 @@
 </div>
 
 <script src="script.js"></script>
-<script>
-  const supabaseUrl = "https://kxqlazkoqpnxhkixkrka.supabase.co";
-const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imt4cWxhemtvcXBueGhraXhrcmthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE5OTA0NzAsImV4cCI6MjA4NzU2NjQ3MH0.pazNZf0EZosx7duxSabesLHISGKzqgvVuX-OJXPKR6g";
-const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
-// Feedback Form Handler
-document.getElementById("feedbackForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  const status = document.getElementById("status");
-  const submitButton = e.target.querySelector('button[type="submit"]');
-  
-  // Show loading state
-  status.innerText = "Submitting...";
-  status.style.color = "#fff";
-  submitButton.disabled = true;
-  submitButton.innerText = "Submitting...";
-
-  const name = document.getElementById("name").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const message = document.getElementById("message").value.trim();
-
-  console.log("Attempting to submit feedback:", { name, email, message });
-
-  try {
-    const { data, error } = await supabaseClient
-      .from("feedback")
-      .insert([{ 
-        name: name, 
-        email: email, 
-        message: message 
-      }])
-      .select();
-
-    if (error) {
-      console.error("Supabase error:", error);
-      status.innerText = `❌ Error: ${error.message}`;
-      status.style.color = "#ff4444";
-    } else {
-      console.log("Feedback submitted successfully:", data);
-      status.innerText = "✅ Feedback submitted successfully!";
-      status.style.color = "#00ffd5";
-      e.target.reset();
-      
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        status.innerText = "";
-      }, 5000);
-    }
-  } catch (err) {
-    console.error("Unexpected error:", err);
-    status.innerText = "❌ An unexpected error occurred. Please try again.";
-    status.style.color = "#ff4444";
-  } finally {
-    submitButton.disabled = false;
-    submitButton.innerText = "Submit Feedback";
-  }
-});
-</script>
 </body>
 </html>
 
