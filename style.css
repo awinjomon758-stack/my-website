@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +16,7 @@ body {
   overflow-x: hidden;
 }
 
-/* HERO */
+/* HERO SECTION */
 .hero {
   height: 100vh;
   display: flex;
@@ -47,9 +48,15 @@ body {
   padding: 10px 20px;
   background: #38bdf8;
   color: black;
-  text-decoration: none;
+  border: none;
   border-radius: 6px;
   font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #0ea5e9;
 }
 
 /* NAVBAR */
@@ -73,30 +80,25 @@ body {
 .nav-links a {
   color: white;
   text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: #38bdf8;
 }
 
 /* SECTIONS */
-.about, .contact, .certifications-page {
+.about,
+.certifications-page,
+#feedback {
   padding: 80px 60px;
 }
 
 .about h2,
-.contact h2,
-.certifications-page h2 {
+.certifications-page h2,
+#feedback h2 {
   color: #38bdf8;
   margin-bottom: 20px;
-}
-
-/* SOCIAL */
-.social-icons {
-  margin-top: 20px;
-  display: flex;
-  gap: 20px;
-}
-
-.social-icons a {
-  color: white;
-  font-size: 22px;
 }
 
 /* CERTIFICATIONS */
@@ -110,7 +112,12 @@ body {
   background: #020617;
   padding: 20px;
   border-radius: 10px;
-  border: 1px solid rgba(56,189,248,0.3);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  transition: 0.3s;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
 }
 
 .cert-card h3 {
@@ -128,7 +135,7 @@ body {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.85);
   justify-content: center;
   align-items: center;
 }
@@ -153,6 +160,36 @@ body {
   right: 20px;
   font-size: 28px;
   cursor: pointer;
+  color: white;
+}
+
+/* FORMS */
+input,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
+
+textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+/* FEEDBACK CARDS */
+.feedback-card {
+  background: #020617;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  border-left: 4px solid #38bdf8;
+}
+
+.feedback-card strong {
+  color: #38bdf8;
 }
 
 /* FOOTER */
@@ -163,14 +200,16 @@ footer {
   color: #94a3b8;
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     gap: 10px;
   }
 
-  .about, .contact, .certifications-page {
+  .about,
+  .certifications-page,
+  #feedback {
     padding: 40px 20px;
   }
 }
